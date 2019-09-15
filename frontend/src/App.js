@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import Instructions from './Instructions'
 import Contact from './Contact'
-
+import Counter from './Counter'
+ 
 class App extends Component {
   constructor(props) {
     super(props)
@@ -18,9 +19,10 @@ class App extends Component {
     return (
       <div className="App">
         <Instructions />
+        <Counter />
 
         {this.state.contacts.map(x => (
-          <Contact id={x.id} name={x.name} nickcname={x.nickname} hobby={x.hobby} />
+          <Contact id={x.id} name={x.name} nickname={x.nickname} hobby={x.hobby} />
         ))}
       </div>
     )

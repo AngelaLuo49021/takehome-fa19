@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 
-class App extends Component {
+class Contact extends Component {
   // YOUR CODE GOES BELOW
   
   render() {
     return (
-      <div/> 
+        <li>
+            {this.props.name}
+        </li>
     )
   }
 }
 
-export default App
+export default Contact
