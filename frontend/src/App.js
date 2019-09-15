@@ -23,8 +23,17 @@ class App extends Component {
 
         {this.state.contacts.map(x => (
           <Contact id={x.id} name={x.name} nickname={x.nickname} hobby={x.hobby} />
-        ))}
+        ))} 
+
+      <form>
+        <label>
+        Name:
+          <input type="text" name="name" />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
       </div>
+      
     )
   }
 }
