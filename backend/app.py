@@ -78,7 +78,7 @@ def contacts_hobby():
         return create_response(status=404, message="No contact with this id exists")"""
     """db.getById('contacts', int(id))"""
     """return create_response("contact: " +id : db.getById('contacts', int(id)))"""
-     return 'Hobby : ' + arg1
+     return 'Hobby : '
     
 """
 ~~~~~~~~~~~~ END API ~~~~~~~~~~~~
