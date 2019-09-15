@@ -80,11 +80,26 @@ def contacts_hobby():
     
     return create_response({"hobby" : db.getByHobby('contacts',hobby)})
 
-@app.route("/contacts/<name>/<nickname>/<hobby>", methods=['POST'])
-def contacts_add(name, nickname, hobby):
-    #if name is None:
-        #return create_response(status=201, message="Error: No name given")
-    return create_response(message="stuff is happening")
+@app.route("/contacts", methods=['POST'])
+@app.route("/contacts", methods=['POST'])
+def contacts_add():
+    data = request.get_json()
+    try:
+        name = data['name']
+    except Exception:
+        return create_response(status=422, message="Error: No NAME given")
+    try:
+        nickname = data['nickname']
+    except Exception:
+        return create_response(status=422, message="Error: No NICKNAME given")
+    try:
+        hobby = data['hobby']
+    except Exception:
+        return create_response(status=422, message="Error: No HOBBY given")
+    payload = {'name':name, 'nickname':nickname, 'hobby':hobby}
+    db.create('contacts', payload)
+
+    return create_response({"new contact" : db.getLastEntry('contacts')}, status=201)
 """
 ~~~~~~~~~~~~ END API ~~~~~~~~~~~~
 """

@@ -11,6 +11,10 @@ def get(type):
 def getById(type, id):
     return next((i for i in get(type) if i["id"] == id), None)
 
+def getLastEntry(type):
+    last_id = max([i["id"] for i in get(type)])
+    return next((i for i in get(type) if i["id"] == last_id), None)
+
 def getByHobby(type, hobby):
     return next((i for i in get(type) if i["hobby"] == hobby), None)
 
