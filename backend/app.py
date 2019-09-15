@@ -117,26 +117,9 @@ def contacts_update(id):
         hobby = data['hobby']
     except Exception:
         return create_response(status=422, message="Error: No HOBBY given")
-    update_values = {name}
+    update_values =  {'name':name, 'nickname':nickname, 'hobby':hobby}
     db.updateById('contacts',id, update_values)
-    '''
-    try:
-        name = data['name']
-        db.updateById('contacts',id, name)
-    except Exception:
-        return create_response(status=422, message="Error: No NAME given")
-        '''
-    """
-    try:
-        nickname = data['nickname']
-    except Exception:
-    try:
-        hobby = data['hobby']
-    except Exception:
-    """
     return create_response({"update contact" : db.getById('contacts',int(id))})
-    #return create_response(status=422, message="Is this working????")
-
 
 
 """
