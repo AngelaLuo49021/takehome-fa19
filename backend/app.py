@@ -81,7 +81,6 @@ def contacts_hobby():
     return create_response({"hobby" : db.getByHobby('contacts',hobby)})
 
 @app.route("/contacts", methods=['POST'])
-@app.route("/contacts", methods=['POST'])
 def contacts_add():
     data = request.get_json()
     try:
@@ -100,6 +99,46 @@ def contacts_add():
     db.create('contacts', payload)
 
     return create_response({"new contact" : db.getLastEntry('contacts')}, status=201)
+
+@app.route("/contacts/<id>", methods=['PUT'])
+def contacts_update(id):
+    if db.getById('contacts', int(id)) is None:
+        return create_response(status=404, message="No contact with this id exists")
+    data = request.get_json()
+    try:
+        name = data['name']
+    except Exception:
+        return create_response(status=422, message="Error: No NAME given")
+    try:
+        nickname = data['nickname']
+    except Exception:
+        return create_response(status=422, message="Error: No NICKNAME given")
+    try:
+        hobby = data['hobby']
+    except Exception:
+        return create_response(status=422, message="Error: No HOBBY given")
+    update_values = {name}
+    db.updateById('contacts',id, update_values)
+    '''
+    try:
+        name = data['name']
+        db.updateById('contacts',id, name)
+    except Exception:
+        return create_response(status=422, message="Error: No NAME given")
+        '''
+    """
+    try:
+        nickname = data['nickname']
+    except Exception:
+    try:
+        hobby = data['hobby']
+    except Exception:
+    """
+    return create_response({"update contact" : db.getById('contacts',int(id))})
+    #return create_response(status=422, message="Is this working????")
+
+
+
 """
 ~~~~~~~~~~~~ END API ~~~~~~~~~~~~
 """
