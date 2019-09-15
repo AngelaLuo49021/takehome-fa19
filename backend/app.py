@@ -72,16 +72,19 @@ def contacts_show(id):
     
     return create_response({"contact" : db.getById('contacts', int(id))})
 
-@app.route("/contacts", methods=['GET'])
+@app.route("/contacts/", methods=['GET'])
 def contacts_hobby():
-    hobby = request.args['hobby']
-    '''
-    if db.getById('contacts', int(id)) is None:
-        return create_response(status=404, message="No contact with this id exists")
-    '''
-    return create_response({"hobby" : db.get('hobby')})
+    hobby = request.args['hobby'] 
+    if db.getByHobby('contacts', hobby) is None:
+        return create_response(status=404, message="No contact with this Hobby exists")
+    
+    return create_response({"hobby" : db.getByHobby('contacts',hobby)})
 
-
+@app.route("/contacts/<name>/<nickname>/<hobby>", methods=['POST'])
+def contacts_add(name, nickname, hobby):
+    #if name is None:
+        #return create_response(status=201, message="Error: No name given")
+    return create_response(message="stuff is happening")
 """
 ~~~~~~~~~~~~ END API ~~~~~~~~~~~~
 """
