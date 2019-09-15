@@ -13,6 +13,11 @@ class App extends Component {
         {id: 3, name: "Daniel", nickname: "oppa", hobby: "losing money with options trading"},
       ]
     }
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  handleSubmit() {
+    const newItem =  {id: 4, name: "Angela", nickname: "toast", hobby: "crying"}
+    this.setState({contacts: this.state.lists.concat(newItem)})
   }
 
   render() {
@@ -20,6 +25,7 @@ class App extends Component {
       <div className="App">
         <Instructions />
         <Counter />
+      
 
         {this.state.contacts.map(x => (
           <Contact id={x.id} name={x.name} nickname={x.nickname} hobby={x.hobby} />
@@ -27,10 +33,13 @@ class App extends Component {
 
       <form>
         <label>
-        Name:
-          <input type="text" name="name" />
+        Contact:
+          <input type="text" contact="name"
+          />
         </label>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit" 
+        onClick={this.handleSubmit} 
+        />
       </form>
       </div>
       
