@@ -64,22 +64,24 @@ def delete_show(id):
 
 
 # TODO: Implement the rest of the API here!
+
 @app.route("/contacts/<id>", methods=['GET'])
 def contacts_show(id):
     if db.getById('contacts', int(id)) is None:
         return create_response(status=404, message="No contact with this id exists")
-    """db.getById('contacts', int(id))"""
+    
     return create_response({"contact" : db.getById('contacts', int(id))})
 
-@app.route("/contacts?hobby", methods=['GET'])
+@app.route("/contacts", methods=['GET'])
 def contacts_hobby():
-    arg1 = request.args['arg1']
-    """if db.getById('contacts', hobby) is None:
-        return create_response(status=404, message="No contact with this id exists")"""
-    """db.getById('contacts', int(id))"""
-    """return create_response("contact: " +id : db.getById('contacts', int(id)))"""
-     return 'Hobby : '
-    
+    hobby = request.args['hobby']
+    '''
+    if db.getById('contacts', int(id)) is None:
+        return create_response(status=404, message="No contact with this id exists")
+    '''
+    return create_response({"hobby" : db.get('hobby')})
+
+
 """
 ~~~~~~~~~~~~ END API ~~~~~~~~~~~~
 """
