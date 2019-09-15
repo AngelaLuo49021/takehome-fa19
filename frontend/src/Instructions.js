@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react'
 
 class Instructions extends Component {
@@ -15,12 +16,12 @@ class Instructions extends Component {
     )
   }
 }
-
 export default Instructions
+
 //COUNTER
 //ISSUE WITH COUNTER NOT RUNNING IF ITS NOT IN THIS FILE
-/*
 
+/*
 import React, { Component } from 'react'
 class Counter extends Component {
   // YOUR CODE GOES BELOW
