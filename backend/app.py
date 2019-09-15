@@ -70,6 +70,16 @@ def contacts_show(id):
         return create_response(status=404, message="No contact with this id exists")
     """db.getById('contacts', int(id))"""
     return create_response({"contact" : db.getById('contacts', int(id))})
+
+@app.route("/contacts?hobby", methods=['GET'])
+def contacts_hobby():
+    arg1 = request.args['arg1']
+    """if db.getById('contacts', hobby) is None:
+        return create_response(status=404, message="No contact with this id exists")"""
+    """db.getById('contacts', int(id))"""
+    """return create_response("contact: " +id : db.getById('contacts', int(id)))"""
+     return 'Hobby : ' + arg1
+    
 """
 ~~~~~~~~~~~~ END API ~~~~~~~~~~~~
 """
