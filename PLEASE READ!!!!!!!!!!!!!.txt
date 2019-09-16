@@ -1,0 +1,5 @@
+Please Read!!\
+-For Backend Part 3, I could not get it to work with /contacts?hobby=weeb so I did 
+/contacts/?hobby=weeb
+
+-Frontend and Backend part 5 are unfinished after 10 hours}
