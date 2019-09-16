@@ -100,6 +100,7 @@ def contacts_add():
 
     return create_response({"new contact" : db.getLastEntry('contacts')}, status=201)
 
+   return create_response({"update contact" : db.getById('contacts', int(id))})
 @app.route("/contacts/<id>", methods=['PUT'])
 def contacts_update(id):
     if db.getById('contacts', int(id)) is None:
@@ -117,10 +118,9 @@ def contacts_update(id):
         hobby = data['hobby']
     except Exception:
         return create_response(status=422, message="Error: No HOBBY given")
-    update_values =  {'name':name, 'nickname':nickname, 'hobby':hobby}
-    db.updateById('contacts',id, update_values)
+    change =  {'name':name}
+    db.updateById('contacts',id, change)
     return create_response({"update contact" : db.getById('contacts',int(id))})
-
 
 """
 ~~~~~~~~~~~~ END API ~~~~~~~~~~~~

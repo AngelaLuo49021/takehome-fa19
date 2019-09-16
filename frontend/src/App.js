@@ -16,8 +16,9 @@ class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleSubmit() {
-    const newItem =  {id: 4, name: "Angela", nickname: "toast", hobby: "crying"}
-    this.setState({contacts: this.state.lists.concat(newItem)})
+    const num = Object.keys(this.state.contacts).length
+    const newItem =  {id: num+1, name: "Angela", nickname: "toast", hobby: "crying"}
+    this.setState({contacts: this.state.contacts.concat(newItem)})
   }
 
   render() {
@@ -34,12 +35,11 @@ class App extends Component {
       <form>
         <label>
         Contact:
-          <input type="text" contact="name"
+          <input type="text" contact="contact"
           />
         </label>
-        <input type="submit" value="Submit" 
-        onClick={this.handleSubmit} 
-        />
+        
+        <button type="submit" onClick={() => this.handleSubmit()}>Submit</button>
       </form>
       </div>
       
@@ -48,3 +48,10 @@ class App extends Component {
 }
 
 export default App
+
+/*
+<input type="submit" value="Submit" 
+        onClick={this.handleSubmit} 
+        />
+
+        */
